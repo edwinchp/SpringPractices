@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 @RestController
 public class TestingController {
 
@@ -39,9 +42,18 @@ class ControllerTest {
         p.setName("Edwin");
         p.setLastName("Chi");
         p.setEmail("chipineiro@gmail.com");
-        p.setPhone("9999999999");
+        p.setPhone("9999999998");
 
-        model.addAttribute("persona", p);
+        var p2 = new Person();
+        p2.setName("Mildred");
+        p2.setLastName("Manrique");
+        p2.setEmail("manriquepech@gmail.com");
+        p2.setPhone("9999999999");
+
+        var persons = Arrays.asList(p, p2);
+        //var persons = new ArrayList();
+
+        model.addAttribute("persons", persons);
         return "index";
     }
 

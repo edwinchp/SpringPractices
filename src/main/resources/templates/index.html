@@ -3,15 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Controller</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 <h1>Testing @Controller</h1>
 <p th:text="${message}"></p>
 <p th:text="${propMessage}"></p>
 <p th:text="${persona}"></p>
-<span th:text="${persona.name}"></span><br>
+<!--<span th:text="${persona.name}"></span><br>
 <span th:text="${persona.lastName}"></span><br>
 <span th:text="${persona.email}"></span><br>
-<span th:text="${persona.phone}"></span><br>
+<span th:text="${persona.phone}"></span><br>-->
+
+<p th:text="${persons}"></p>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:if="${persons != null or !persons.empty}">
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.email}"></td>
+            <td th:text="${person.phone}"></td>
+        </tr>
+    </div>
+    <div th:if="${persons == null or persons.empty}">
+        <tr>
+            <td colspan="4">No items</td>
+        </tr>
+    </div>
+
+</table>
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </html>
