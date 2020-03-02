@@ -1,5 +1,6 @@
 package com.example.SpringPractices;
 
+import com.example.SpringPractices.domain.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,18 @@ class ControllerTest {
         model.addAttribute("message", message);
         model.addAttribute("propMessage", propMessage);
         log.info("Something...");
+        return "index";
+    }
+
+    @GetMapping("/person")
+    public String person(Model model){
+        Person p = new Person();
+        p.setName("Edwin");
+        p.setLastName("Chi");
+        p.setEmail("chipineiro@gmail.com");
+        p.setPhone("9999999999");
+
+        model.addAttribute("persona", p);
         return "index";
     }
 
